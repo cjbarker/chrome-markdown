@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Markdown Editor</title>
+    <link rel="stylesheet" href="editor.css" />
+  </head>
+  <body data-theme="light" data-mode="split">
+    <header class="toolbar" role="toolbar" aria-label="Editor toolbar">
+      <div class="toolbar-group toolbar-left">
+        <span class="brand" aria-hidden="true">MD</span>
+        <span class="title">Markdown Editor</span>
+      </div>
+
+      <div class="toolbar-group toolbar-center" role="group" aria-label="Mode">
+        <button
+          type="button"
+          class="mode-btn"
+          data-mode="edit"
+          aria-pressed="false"
+          title="Edit only (Ctrl/Cmd+1)"
+        >
+          Edit
+        </button>
+        <button
+          type="button"
+          class="mode-btn"
+          data-mode="split"
+          aria-pressed="true"
+          title="Split view (Ctrl/Cmd+2)"
+        >
+          Split
+        </button>
+        <button
+          type="button"
+          class="mode-btn"
+          data-mode="view"
+          aria-pressed="false"
+          title="View only (Ctrl/Cmd+3)"
+        >
+          View
+        </button>
+      </div>
+
+      <div class="toolbar-group toolbar-right">
+        <button type="button" id="open-btn" class="icon-btn" title="Open .md file">
+          Open
+        </button>
+        <button type="button" id="save-btn" class="icon-btn" title="Save as .md (Ctrl/Cmd+S)">
+          Save
+        </button>
+        <button type="button" id="clear-btn" class="icon-btn" title="Clear editor">
+          Clear
+        </button>
+        <button
+          type="button"
+          id="theme-btn"
+          class="icon-btn theme-toggle"
+          aria-pressed="false"
+          title="Toggle dark mode"
+        >
+          <span class="theme-icon" aria-hidden="true">&#9728;</span>
+          <span class="theme-label">Dark</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <section class="pane editor-pane" aria-label="Markdown source">
+        <textarea
+          id="editor"
+          spellcheck="true"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          placeholder="# Start typing Markdown..."
+        ></textarea>
+      </section>
+      <div class="divider" aria-hidden="true"></div>
+      <section class="pane preview-pane" aria-label="Rendered preview">
+        <article id="preview" class="markdown-body"></article>
+      </section>
+    </main>
+
+    <footer class="status-bar" aria-live="polite">
+      <span id="status" class="status-text">Ready</span>
+      <span class="spacer"></span>
+      <span id="counts" class="counts">0 words &middot; 0 chars</span>
+    </footer>
+
+    <input type="file" id="file-input" accept=".md,.markdown,.txt,text/markdown,text/plain" hidden />
+
+    <script src="lib/marked.min.js"></script>
+    <script src="editor.js"></script>
+  </body>
+</html>
