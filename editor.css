@@ -216,6 +216,52 @@ body[data-mode="view"] .workspace {
   grid-template-columns: 1fr;
 }
 
+/* Print view: hide chrome and show only the rendered preview */
+.print-exit {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+  font: inherit;
+  font-size: 12px;
+  color: var(--text);
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  display: none;
+}
+
+.print-exit:hover {
+  background: var(--bg);
+}
+
+.print-exit:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+body[data-print-view="true"] {
+  grid-template-rows: 1fr;
+}
+
+body[data-print-view="true"] .toolbar,
+body[data-print-view="true"] .status-bar,
+body[data-print-view="true"] .editor-pane,
+body[data-print-view="true"] .divider {
+  display: none;
+}
+
+body[data-print-view="true"] .workspace {
+  grid-template-columns: 1fr;
+}
+
+body[data-print-view="true"] .print-exit {
+  display: inline-block;
+}
+
 /* Status bar */
 .status-bar {
   display: flex;
@@ -390,6 +436,42 @@ body[data-mode="view"] .workspace {
   border-bottom-width: 2px;
   border-radius: 4px;
   background: var(--bg-elev);
+}
+
+/* Browser print: always strip the chrome from the printed output */
+@media print {
+  html,
+  body {
+    height: auto;
+    overflow: visible;
+    background: #fff;
+    color: #000;
+  }
+
+  body {
+    display: block;
+  }
+
+  .toolbar,
+  .status-bar,
+  .editor-pane,
+  .divider,
+  .print-exit {
+    display: none !important;
+  }
+
+  .workspace {
+    display: block;
+  }
+
+  .pane {
+    overflow: visible;
+  }
+
+  .markdown-body {
+    max-width: none;
+    padding: 0;
+  }
 }
 
 /* Responsive */

@@ -57,6 +57,8 @@ function greet(name) {
   const openBtn = document.getElementById("open-btn");
   const saveBtn = document.getElementById("save-btn");
   const clearBtn = document.getElementById("clear-btn");
+  const printBtn = document.getElementById("print-btn");
+  const printExitBtn = document.getElementById("print-exit-btn");
   const fileInput = document.getElementById("file-input");
 
   if (typeof marked !== "undefined") {
@@ -278,8 +280,20 @@ function greet(name) {
     setTheme(body.dataset.theme === "dark" ? "light" : "dark");
   });
 
+  function enterPrintView() {
+    body.dataset.printView = "true";
+    printExitBtn.focus();
+  }
+
+  function exitPrintView() {
+    delete body.dataset.printView;
+    printBtn.focus();
+  }
+
   openBtn.addEventListener("click", openFile);
   saveBtn.addEventListener("click", saveCurrent);
+  printBtn.addEventListener("click", enterPrintView);
+  printExitBtn.addEventListener("click", exitPrintView);
   clearBtn.addEventListener("click", () => {
     if (!editor.value || confirm("Clear the editor? This cannot be undone.")) {
       editor.value = "";
@@ -292,6 +306,11 @@ function greet(name) {
   editor.addEventListener("keydown", handleTab);
 
   document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && body.dataset.printView === "true") {
+      e.preventDefault();
+      exitPrintView();
+      return;
+    }
     const meta = e.ctrlKey || e.metaKey;
     if (!meta) return;
     if (e.key === "s" || e.key === "S") {
