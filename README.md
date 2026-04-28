@@ -59,6 +59,15 @@ Everything is local. No network requests are made; the only storage used is
 `chrome.storage.local`, which keeps your last draft, mode, and theme
 preference on this device.
 
+## Versioning
+
+This extension follows a SemVer-aligned strategy adapted to Chrome's
+allowed [extension version
+format](https://developer.chrome.com/docs/extensions/reference/manifest/version).
+The current release is **1.0** — see [`CHANGELOG.md`](./CHANGELOG.md) for
+release notes and [`VERSIONING.md`](./VERSIONING.md) for the bump rules and
+release procedure.
+
 ## License
 
 This project is released under the [MIT License](./LICENSE). The bundled

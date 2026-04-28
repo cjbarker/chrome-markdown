@@ -1,7 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Markdown Viewer & Editor",
-  "version": "1.0.0",
+  "version": "1.0",
+  "version_name": "1.0",
   "description": "View rendered Markdown and edit it as plain text in your browser. Toggle between view/edit modes and light/dark themes.",
   "action": {
     "default_title": "Open Markdown Editor",
