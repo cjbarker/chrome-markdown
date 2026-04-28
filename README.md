@@ -20,7 +20,8 @@ modes, and switch between **light** and **dark** themes.
 1. Clone or download this repository.
 2. Open `chrome://extensions` in Chrome (or any Chromium-based browser).
 3. Enable **Developer mode** (top right).
-4. Click **Load unpacked** and select the [`src/`](./src) directory.
+4. Click **Load unpacked** and select this repository's root folder (the
+   directory containing `manifest.json`).
 5. Pin the extension and click its toolbar icon to open the editor in a new
    tab.
 
@@ -41,16 +42,15 @@ theme, opening a file, saving, and clearing the editor.
 ## Project layout
 
 ```
-src/
-├── manifest.json       # Manifest V3 declaration
-├── background.js       # Opens the editor tab when the action icon is clicked
-├── editor.html         # Editor + preview UI
-├── editor.css          # Light / dark theming and layout
-├── editor.js           # Rendering, mode/theme toggles, persistence, file ops
-├── icons/              # 16 / 32 / 48 / 128 px action icons
-└── lib/
-    ├── marked.min.js   # Bundled Markdown parser (MIT)
-    └── marked.LICENSE.md
+manifest.json           # Manifest V3 declaration
+background.js           # Opens the editor tab when the action icon is clicked
+editor.html             # Editor + preview UI
+editor.css              # Light / dark theming and layout
+editor.js               # Rendering, mode/theme toggles, persistence, file ops
+icons/                  # 16 / 32 / 48 / 128 px action icons
+lib/
+├── marked.min.js       # Bundled Markdown parser (MIT)
+└── marked.LICENSE.md
 ```
 
 ## Privacy
@@ -63,4 +63,4 @@ preference on this device.
 
 This project is released under the [MIT License](./LICENSE). The bundled
 `marked` library is also MIT-licensed; see
-[`src/lib/marked.LICENSE.md`](./src/lib/marked.LICENSE.md).
+[`lib/marked.LICENSE.md`](./lib/marked.LICENSE.md).
